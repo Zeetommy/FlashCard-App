@@ -27,4 +27,43 @@ function Home(){
             return await deleteDeck(deck.id)
         }
     }
+
+    return (
+        <div>
+            <Link to="/decks/new">
+                Create Deck
+            </Link>
+            <div>
+                {decks.map((deck)=>{
+                    return(
+                        <div>
+                            <div>
+                                <div>
+                                    {`${deck.name}`}
+                                </div>
+                                <div>
+                                    {`${deck.cards.length} cards`}
+                                </div>
+                                <div>
+                                    {`${deck.description}`}
+                                </div>
+                                <Link to = {`decks/${deck.id}`}>
+                                    View
+                                </Link>
+                                <Link to = {`decks/${deck.id}/study`}>
+                                    Study
+                                </Link>
+                                <button 
+                                    type="delete"
+                                    onclick={() => handleDelete(deck)}
+                                    >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    )
 }
