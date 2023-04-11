@@ -44,9 +44,25 @@ function study(){
             ) {
                setCardNumber(1)
                isFront(true)
-         } else {
+        } else {
               history.push("/")
            }
         }
     }
+
+    function showNextButton(cards, index) {
+        if(front){
+            return null
+        } else {
+            return (
+                <button 
+                    onClick ={()=> nextCard(index + 1, cards.length)}
+                >
+                    Next
+                </button>    
+            )
+        }
+    }
+
+    
 }
