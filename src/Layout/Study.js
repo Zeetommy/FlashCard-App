@@ -30,4 +30,23 @@ function study(){
             isFront(false)
         }
     }
+
+    function nextCard(index, total) {
+        console.log(index)
+        if(index < total){
+            setCardNumber(cardNumber + 1)
+            isFront(true)
+        } else {
+            if(
+                window.confirm (
+                    `Restart cards? Click 'cancel' to return to the home page`
+                )
+            ) {
+               setCardNumber(1)
+               isFront(true)
+         } else {
+              history.push("/")
+           }
+        }
+    }
 }
