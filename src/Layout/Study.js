@@ -91,5 +91,20 @@ function study(){
         )
     }
 
+    function notEnoughCards{
+        return (
+            <div>
+                <h2>Not enough cards.</h2>
+                <p>
+                    You need at least 3 cards to study. There are {cards.length}{" "}
+                    cards in this deck.
+                </p>
+                <Link to={`/decks/${deck.id}/cards/new`}>
+                    Add cards
+                </Link>
+            </div>
+        )
+    }
+
     
 }
