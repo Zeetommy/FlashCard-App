@@ -7,7 +7,7 @@ function study(){
     const [ deck, setDeck ] = useState({})
     const [ card, setcard ] = useState([])
     const [ cardNumber, setCardNumber ] = useState(1)
-    const [ flip, isFlip ] = useState(true)
+    const [ front, isFront ] = useState(true)
     const history = useHistory()
 
     useEffect(()=>{
@@ -22,5 +22,12 @@ function study(){
         }
         fetchData()
     }, [])
-    
+
+    function flipCard(){
+        if(front){
+            isFront(true)
+        } else {
+            isFront(false)
+        }
+    }
 }
