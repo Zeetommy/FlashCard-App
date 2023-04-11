@@ -64,5 +64,32 @@ function study(){
         }
     }
 
+    function enoughCards() {
+        return (
+            <div>
+                {cards.map((card, index)=>{
+                    if(index === cardNumber - 1){
+                        return (
+                            <div key={card.id}>
+                                <div>
+                                    {`Card ${index+1} of ${cards.length}`}
+                                </div>
+                                <div>
+                                    {front ? card.front : card.back}
+                                </div>
+                                <button
+                                    onClick={flipCard}
+                                >
+                                    Flip
+                                </button>
+                                {showNextButton(cards, index)}
+                            </div>
+                        )
+                    }
+                })}
+            </div>
+        )
+    }
+
     
 }
