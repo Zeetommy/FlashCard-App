@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api/index";
 
-function study(){
+function Study(){
     const { deckId } = useParams()
     const [ deck, setDeck ] = useState({})
     const [ card, setcard ] = useState([])
@@ -106,5 +106,35 @@ function study(){
         )
     }
 
-    
+    return (
+        <div>
+            <ol>
+                <li>
+                    <Link to="/">
+                        Home
+                    </Link>
+                </li>
+                <li>
+                    <Link to {`/decks/${deckId}`}>
+                        {deck.name}
+                    </Link>
+                </li>
+                <li>
+                    Study
+                </li>
+            </ol>
+            <div>
+                <h2>{`${deck.name}: Study`}</h2>
+                <div>
+                    {cards.length === 0 
+                        ? notEnoughCards()
+                        : cards.length > 2
+                        ? enoughCards()
+                        : notEnoughCards()}
+                </div>
+            </div>
+        </div>
+    )    
 }
+
+export default Study
