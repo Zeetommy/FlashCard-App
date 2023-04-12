@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { createDeck } from "../utils/api/index";
+import React, { useState } from "react"
+import { Link, useHistory } from "react-router-dom"
+import { createDeck } from "../utils/api/index"
 
 function CreateDeck(){
     const history = useHistory()
@@ -54,7 +54,7 @@ function CreateDeck(){
                 </div>
                 <div>
                     <label>Description</label>
-                    <input 
+                    <textarea 
                         id="descripton"
                         name="description"
                         type="text"

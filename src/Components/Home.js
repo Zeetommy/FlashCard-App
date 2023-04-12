@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { listDecks, deleteDeck } from "../utils/api/index";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { listDecks, deleteDeck } from "../utils/api/index"
+import { Link, useHistory } from "react-router-dom"
 
 function Home(){
     const history = useHistory()
     const [ decks,setDecks ] = useState([])
     useEffect(()=>{
         async function loadDecks(){
-            const abortController = new AbortController();
+            const abortController = new AbortController()
             try{
                 const deckResponse = await listDecks(abortController.signal)
                 setDecks(deckResponse)
@@ -35,33 +35,23 @@ function Home(){
             </Link>
             <div>
                 {decks.map((deck)=>{
-                    return(
+                    return (
+                      <div key={deck.id}>
                         <div>
-                            <div>
-                                <div>
-                                    {`${deck.name}`}
-                                </div>
-                                <div>
-                                    {`${deck.cards.length} cards`}
-                                </div>
-                                <div>
-                                    {`${deck.description}`}
-                                </div>
-                                <Link to = {`decks/${deck.id}`}>
-                                    View
-                                </Link>
-                                <Link to = {`decks/${deck.id}/study`}>
-                                    Study
-                                </Link>
-                                <button 
-                                    type="delete"
-                                    onClick={() => handleDelete(deck)}
-                                    >
-                                    Delete
-                                </button>
-                            </div>
+                          <div>{`${deck.name}`}</div>
+                          <div>{`${deck.cards.length} cards`}</div>
+                          <div>{`${deck.description}`}</div>
+                          <Link to={`decks/${deck.id}`}>View</Link>
+                          <Link to={`decks/${deck.id}/study`}>Study</Link>
+                          <button
+                            type="delete"
+                            onClick={() => handleDelete(deck)}
+                          >
+                            Delete
+                          </button>
                         </div>
-                    )
+                      </div>
+                    );
                 })}
             </div>
         </div>

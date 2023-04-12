@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
-import { readDeck } from "../utils/api/index";
+import React, { useEffect, useState } from "react"
+import { Link, useParams, useHistory } from "react-router-dom"
+import { readDeck } from "../utils/api/index"
 
 function Study(){
     const { deckId } = useParams()
@@ -23,14 +23,6 @@ function Study(){
         fetchData()
     }, [])
 
-    function flipCard(){
-        if(front){
-            isFront(true)
-        } else {
-            isFront(false)
-        }
-    }
-
     function nextCard(index, total) {
         console.log(index)
         if(index < total){
@@ -48,6 +40,14 @@ function Study(){
               history.push("/")
            }
         }
+    }
+
+    function flipCard() {
+      if (front) {
+        isFront(false);
+      } else {
+        isFront(true);
+      }
     }
 
     function showNextButton(cards, index) {

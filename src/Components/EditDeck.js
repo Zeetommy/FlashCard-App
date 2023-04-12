@@ -9,7 +9,7 @@ function EditDeck() {
         id: "",
         name: "",
         description: "",
-    };
+    }
     const [deck, setDeck] = useState(initialDeckState)
 
     useEffect(() => {
@@ -32,19 +32,19 @@ function EditDeck() {
       setDeck({
         ...deck,
         [target.name]: target.value,
-      });
+      })
     }
 
     async function handleSubmit(event) {
-      event.preventDefault();
-      const abortController = new AbortController();
-      const response = await updateDeck({ ...deck }, abortController.signal);
-      history.push(`/decks/${deckId}`);
-      return response;
+      event.preventDefault()
+      const abortController = new AbortController()
+      const response = await updateDeck({ ...deck }, abortController.signal)
+      history.push(`/decks/${deckId}`)
+      return response
     }
 
     async function handleCancel() {
-      history.push(`/decks/${deckId}`);
+      history.push(`/decks/${deckId}`)
     }
 
     return (

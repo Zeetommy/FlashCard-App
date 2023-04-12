@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
-import { readDeck, deleteDeck, deleteCard } from "../utils/api/index";
+import React, { useState, useEffect } from "react"
+import { Link, useParams, useHistory } from "react-router-dom"
+import { readDeck, deleteDeck, deleteCard } from "../utils/api/index"
 
 function Deck() {
     const history = useHistory()
@@ -10,7 +10,7 @@ function Deck() {
 
     useEffect(() => {
         async function fetchData() {
-            const abortController = new AbortController();
+            const abortController = new AbortController()
             try {
                 const deckResponse = await readDeck(
                     deckId,
@@ -52,7 +52,7 @@ function Deck() {
         const abortController = new AbortController()
         try {
           history.go(0)
-          return await deleteCard(card.id, abortController.signal);
+          return await deleteCard(card.id, abortController.signal)
         } catch (error) {
           console.error("Something went wrong", error)
         }
