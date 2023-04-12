@@ -15,13 +15,13 @@ function Home(){
                 console.error("Something went wrong", error)
            }
         return () => {
-            abortController.abort
+            abortController.abort()
             }
        }
     loadDecks()
     }, [])
 
-    async function handleDelete(decks){
+    async function handleDelete(deck){
         if(window.confirm(`Delete this deck? You will not be able to recover it`)){
             history.go(0)
             return await deleteDeck(deck.id)
@@ -55,7 +55,7 @@ function Home(){
                                 </Link>
                                 <button 
                                     type="delete"
-                                    onclick={() => handleDelete(deck)}
+                                    onClick={() => handleDelete(deck)}
                                     >
                                     Delete
                                 </button>

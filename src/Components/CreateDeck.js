@@ -28,7 +28,7 @@ function CreateDeck(){
         return response
     }
 
-    async function handeCancel(){
+    async function handleCancel(){
         history.push("/")
     }
 

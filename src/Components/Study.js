@@ -5,7 +5,7 @@ import { readDeck } from "../utils/api/index";
 function Study(){
     const { deckId } = useParams()
     const [ deck, setDeck ] = useState({})
-    const [ card, setcard ] = useState([])
+    const [ cards, setCards ] = useState([])
     const [ cardNumber, setCardNumber ] = useState(1)
     const [ front, isFront ] = useState(true)
     const history = useHistory()
@@ -15,9 +15,9 @@ function Study(){
             const abortController = new AbortController()
             const response = await readDeck(deckId, abortController.signal)
             setDeck(response)
-            setcard(response.cards)
+            setCards(response.cards)
             return () =>{
-                abortController.abort
+                abortController.abort()
             }
         }
         fetchData()
@@ -91,7 +91,7 @@ function Study(){
         )
     }
 
-    function notEnoughCards{
+    function notEnoughCards(){
         return (
             <div>
                 <h2>Not enough cards.</h2>
@@ -100,7 +100,7 @@ function Study(){
                     cards in this deck.
                 </p>
                 <Link to={`/decks/${deck.id}/cards/new`}>
-                    Add cards
+                    Add Cards
                 </Link>
             </div>
         )
