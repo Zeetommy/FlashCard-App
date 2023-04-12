@@ -115,9 +115,7 @@ function Study(){
                     </Link>
                 </li>
                 <li>
-                    <Link to {`/decks/${deckId}`}>
-                        {deck.name}
-                    </Link>
+                    <Link to={`/decks/${deckId}`}>{deck.name}</Link>
                 </li>
                 <li>
                     Study

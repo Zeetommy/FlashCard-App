@@ -10,7 +10,7 @@ function CreateDeck(){
     }
 
     const [newDeck, setNewDeck] = useState(initialState) 
-    const handleChange({target}){
+    function handleChange({ target }){
         setNewDeck({
             ...newDeck,
             [target.name]: target.value,
