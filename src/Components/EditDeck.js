@@ -27,4 +27,70 @@ function EditDeck() {
         }
         fetchData()
     }, [])
+
+    function handleChange({ target }) {
+      setDeck({
+        ...deck,
+        [target.name]: target.value,
+      });
+    }
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const abortController = new AbortController();
+      const response = await updateDeck({ ...deck }, abortController.signal);
+      history.push(`/decks/${deckId}`);
+      return response;
+    }
+
+    async function handleCancel() {
+      history.push(`/decks/${deckId}`);
+    }
+
+    return (
+        <div>
+            <ol>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+                </li>
+                <li >Edit Deck</li>
+            </ol>
+            <form onSubmit={handleSubmit}>
+                <h1>Edit Deck</h1>
+                <div className="form-group">
+                    <label>Name</label>
+                    <input
+                        id="name"
+                        name="name"
+                        onChange={handleChange}
+                        type="text"
+                        value={deck.name}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        onChange={handleChange}
+                        type="text"
+                        value={deck.description}
+                    />
+                </div>
+                <button
+                    onClick={() => handleCancel()}
+                >
+                    Cancel
+                </button>
+                <button type="submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+    )
 }
+
+export default EditDeck

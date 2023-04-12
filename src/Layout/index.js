@@ -6,6 +6,9 @@ import Home from "../Components/Home";
 import CreateDeck from "../Components/CreateDeck";
 import Deck from "../Components/Deck";
 import Study from "../Components/Study";
+import EditDeck from "../Components/EditDeck";
+
+
 function Layout() {
   return (
     <>
@@ -23,6 +26,12 @@ function Layout() {
           </Route>
           <Route path="/decks/:deckId/study">
             <Study />
+          </Route>
+          <Route path="/decks/:deckId/edit">
+            <EditDeck />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       </div>
