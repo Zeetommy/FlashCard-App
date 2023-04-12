@@ -27,4 +27,54 @@ function Deck() {
         }
         fetchData()
     }, [])
+
+    async function handleDeleteDeck(deck) {
+      if (
+        window.confirm(`Delete this deck? You will not be able to recover it`)
+      ) {
+        const abortController = new AbortController()
+        try {
+          history.push("/")
+          return await deleteDeck(deck.id, abortController.signal)
+        } catch (error) {
+          console.error("Something went wrong", error)
+        }
+        return () => {
+          abortController.abort()
+        }
+      }
+    }
+
+    async function handleDeleteCard(card) {
+      if (
+        window.confirm(`Delete this card? You will not be able to recover it`)
+      ) {
+        const abortController = new AbortController()
+        try {
+          history.go(0)
+          return await deleteCard(card.id, abortController.signal);
+        } catch (error) {
+          console.error("Something went wrong", error)
+        }
+        return () => {
+          abortController.abort()
+        }
+      }
+    }
+
+    async function handleEditDeck() {
+      history.push(`/decks/${deckId}/edit`)
+    }
+
+    async function handleStudy() {
+      history.push(`/decks/${deckId}/study`)
+    }
+
+    async function handleAddCard() {
+      history.push(`/decks/${deckId}/cards/new`)
+    }
+
+    async function handleEditCard(card) {
+      history.push(`/decks/${deckId}/cards/${card.id}/edit`)
+    }
 }
