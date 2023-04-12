@@ -77,4 +77,74 @@ function Deck() {
     async function handleEditCard(card) {
       history.push(`/decks/${deckId}/cards/${card.id}/edit`)
     }
+
+    if (cards.length > 0) {
+      return (
+        <div>
+          <ol>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>{deck.name}</li>
+          </ol>
+          <div>
+            <div>
+              <h2>{deck.name}</h2>
+              <p>{deck.description}</p>
+              <button
+                onClick={() => handleEditDeck()}
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleStudy()}
+              >
+                Study
+              </button>
+              <button
+                onClick={() => handleAddCard()}
+              >
+                Add Cards
+              </button>
+              <button
+                onClick={() => handleDeleteDeck(deck)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+          <h1>Cards</h1>
+          {cards.map((card) => {
+            return (
+              <div key={card.id}>
+                <div>
+                  <div>
+                    <div className="row">
+                      <div className="col">{card.front}</div>
+                      <div className="col">{card.back}</div>
+                    </div>
+                    <div className="container row">
+                      <button
+                        onClick={() => handleEditCard(card)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteCard(card)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )
+    } else {
+      return null
+    }
 }
+
+export default Deck
