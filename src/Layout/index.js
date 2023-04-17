@@ -1,15 +1,14 @@
-import React from "react"
-import { Switch, Route } from "react-router-dom"
-import Header from "./Header"
-import NotFound from "./NotFound"
-import Home from "../Components/Home"
-import CreateDeck from "../Components/CreateDeck"
-import Deck from "../Components/Deck"
-import Study from "../Components/Study"
-import EditDeck from "../Components/EditDeck"
-import EditCard from "../Components/EditCard"
-import AddCard from "../Components/AddCard"
-
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import Header from "./Header";
+import NotFound from "./NotFound";
+import Home from "../Components/Home";
+import CreateDeck from "../Components/CreateDeck";
+import Deck from "../Components/Deck";
+import Study from "../Components/Study";
+import EditDeck from "../Components/EditDeck";
+import EditCard from "../Components/FormComponent/EditCard";
+import AddCard from "../Components/FormComponent/AddCard";
 
 function Layout() {
   return (
@@ -44,7 +43,7 @@ function Layout() {
         </Switch>
       </div>
     </>
-  )
+  );
 }
 
 export default Layout;
