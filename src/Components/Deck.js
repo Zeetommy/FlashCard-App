@@ -26,7 +26,7 @@ function Deck() {
             }
         }
         fetchData()
-    }, [])
+    }, [deckId])
 
     async function handleDeleteDeck(deck) {
       if (

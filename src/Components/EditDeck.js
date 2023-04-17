@@ -13,20 +13,20 @@ function EditDeck() {
     const [deck, setDeck] = useState(initialDeckState)
 
     useEffect(() => {
-        async function fetchData() {
-            const abortController = new AbortController()
-            try {
-                const response = await readDeck(deckId, abortController.signal)
-                setDeck(response)
-            } catch (error) {
-                console.error("Something went wrong", error)
-            }
-            return () => {
-                abortController.abort()
-            }
+      async function fetchData() {
+        const abortController = new AbortController();
+        try {
+          const response = await readDeck(deckId, abortController.signal);
+          setDeck(response);
+        } catch (error) {
+          console.error("Something went wrong", error);
         }
-        fetchData()
-    }, [])
+        return () => {
+          abortController.abort();
+        };
+      }
+      fetchData();
+    }, [deckId]);
 
     function handleChange({ target }) {
       setDeck({

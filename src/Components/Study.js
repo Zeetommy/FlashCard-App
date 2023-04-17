@@ -21,7 +21,7 @@ function Study(){
             }
         }
         fetchData()
-    }, [])
+    }, [deckId])
 
     function nextCard(index, total) {
         console.log(index)
@@ -67,7 +67,7 @@ function Study(){
     function enoughCards() {
         return (
             <div>
-                {cards.map((card, index)=>{
+                {cards.map((card, index)=> {
                     if(index === cardNumber - 1){
                         return (
                             <div key={card.id}>
