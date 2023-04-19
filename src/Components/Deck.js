@@ -23,7 +23,7 @@ function Deck() {
       };
     }
     fetchData();
-  }, [deckId]);
+  }, []);
 
   async function handleDeleteDeck(deck) {
     if (
@@ -78,35 +78,63 @@ function Deck() {
   if (cards.length > 0) {
     return (
       <div>
-        <ol>
-          <li>
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          <li>{deck.name}</li>
+          <li className="breadcrumb-item active">{deck.name}</li>
         </ol>
-        <div>
-          <div>
-            <h2>{deck.name}</h2>
+        <div className="card">
+          <div className="card-body">
+            <h2 className="card-title">{deck.name}</h2>
             <p>{deck.description}</p>
-            <button onClick={() => handleEditDeck()}>Edit</button>
-            <button onClick={() => handleStudy()}>Study</button>
-            <button onClick={() => handleAddCard()}>Add Cards</button>
-            <button onClick={() => handleDeleteDeck(deck)}>Delete</button>
+            <button
+              onClick={() => handleEditDeck()}
+              className="btn btn-secondary mx-1"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleStudy()}
+              className="btn btn-primary mx-1"
+            >
+              Study
+            </button>
+            <button
+              onClick={() => handleAddCard()}
+              className="btn btn-primary mx-1"
+            >
+              Add Cards
+            </button>
+            <button
+              onClick={() => handleDeleteDeck(deck)}
+              className="btn btn-danger mx-1"
+            >
+              Delete
+            </button>
           </div>
         </div>
         <h1>Cards</h1>
         {cards.map((card) => {
           return (
-            <div key={card.id}>
-              <div>
-                <div>
+            <div className="card-deck" key={card.id}>
+              <div className="card">
+                <div className="card-body">
                   <div className="row">
                     <div className="col">{card.front}</div>
                     <div className="col">{card.back}</div>
                   </div>
                   <div className="container row">
-                    <button onClick={() => handleEditCard(card)}>Edit</button>
-                    <button onClick={() => handleDeleteCard(card)}>
+                    <button
+                      onClick={() => handleEditCard(card)}
+                      className="btn btn-secondary mx-1"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteCard(card)}
+                      className="btn btn-danger mx-1"
+                    >
                       Delete
                     </button>
                   </div>

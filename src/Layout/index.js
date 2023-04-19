@@ -7,8 +7,8 @@ import CreateDeck from "../Components/CreateDeck";
 import Deck from "../Components/Deck";
 import Study from "../Components/Study";
 import EditDeck from "../Components/EditDeck";
-import EditCard from "../Components/FormComponent/EditCard";
-import AddCard from "../Components/FormComponent/AddCard";
+import EditCard from "../Components/EditCard";
+import AddCard from "../Components/AddCard";
 
 function Layout() {
   return (
