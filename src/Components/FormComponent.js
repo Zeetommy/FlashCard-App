@@ -148,7 +148,7 @@ function Form() {
               className="form-control"
               onChange={handleTwist}
               type="text"
-              value={newCard.front}
+              value={card.front}
             />
           </div>
           <div className="form-group">
@@ -159,7 +159,7 @@ function Form() {
               className="form-control"
               onChange={handleTwist}
               type="text"
-              value={newCard.back}
+              value={card.back}
             />
             <button
               className="btn btn-secondary mx-1"
