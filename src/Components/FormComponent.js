@@ -37,8 +37,8 @@ function Form() {
     });
   }
   async function handleCancel() {
-  history.push(`/decks/${deckId}`);
-}
+    history.push(`/decks/${deckId}`);
+  }
   async function handleSubmit(event) {
     event.preventDefault();
     const abortController = new AbortController();
@@ -54,6 +54,14 @@ function Form() {
 
   async function handleDone() {
     history.push(`/decks/${deckId}`);
+  }
+
+  async function handleSave(event) {
+    event.preventDefault();
+    const abortController = new AbortController();
+    const response = await updateCard({ ...card }, abortController.signal);
+    history.push(`/decks/${deckId}`);
+    return response;
   }
 
   if (!cardId) {
@@ -98,7 +106,7 @@ function Form() {
   } else {
     return (
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSave}>
           <h2>{deck.name}: Edit Card</h2>
           <div className="form-group">
             <label>Front</label>
@@ -128,7 +136,7 @@ function Form() {
               Cancel
             </button>
             <button className="btn btn-primary mx-1" type="submit">
-              Submit
+              Save
             </button>
           </div>
         </form>
