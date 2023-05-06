@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { createCard, readDeck } from "../utils/api/index";
+import { createCard, readDeck, updateCard, readCard } from "../utils/api/index";
 
 function Form() {
   const { deckId } = useParams();
@@ -10,9 +10,20 @@ function Form() {
     front: "",
     back: "",
   };
-
+  const initialDeckState = {
+    id: "",
+    name: "",
+    description: "",
+  };
+  const initialCardState = {
+    id: "",
+    front: "",
+    back: "",
+    deckId: "",
+  };
+  const [card, setCard] = useState(initialDeckState);
+  const [deck, setDeck] = useState(initialCardState);
   const [newCard, setNewCard] = useState(initialState);
-  const [deck, setDeck] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -30,9 +41,30 @@ function Form() {
     fetchData();
   }, [deckId]);
 
+    useEffect(() => {
+      async function fetchData() {
+        const abortController = new AbortController();
+        try {
+          const cardResponse = await readCard(cardId, abortController.signal);
+          setCard(cardResponse);
+        } catch (error) {
+          console.error("Something went wrong", error);
+        }
+        return () => {
+          abortController.abort();
+        };
+      }
+      fetchData();
+    }, [cardId]);
   function handleChange({ target }) {
     setNewCard({
       ...newCard,
+      [target.name]: target.value,
+    });
+  }
+  function handleTwist({ target }) {
+    setCard({
+      ...card,
       [target.name]: target.value,
     });
   }
@@ -114,7 +146,7 @@ function Form() {
               id="front"
               name="front"
               className="form-control"
-              onChange={handleChange}
+              onChange={handleTwist}
               type="text"
               value={newCard.front}
             />
@@ -125,7 +157,7 @@ function Form() {
               id="back"
               name="back"
               className="form-control"
-              onChange={handleChange}
+              onChange={handleTwist}
               type="text"
               value={newCard.back}
             />

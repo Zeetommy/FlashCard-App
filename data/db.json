@@ -43,12 +43,6 @@
       "id": 5
     },
     {
-      "front": "",
-      "back": "",
-      "deckId": 1,
-      "id": 6
-    },
-    {
       "front": "what is an examople",
       "back": "whatever",
       "deckId": 2,
@@ -59,6 +53,18 @@
       "back": "what",
       "deckId": 2,
       "id": 8
+    },
+    {
+      "front": "asasd",
+      "back": "sadasd",
+      "deckId": 2,
+      "id": 9
+    },
+    {
+      "front": "d",
+      "back": "a",
+      "deckId": 1,
+      "id": 10
     }
   ]
 }
