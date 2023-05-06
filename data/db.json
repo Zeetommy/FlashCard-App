@@ -47,6 +47,18 @@
       "back": "",
       "deckId": 1,
       "id": 6
+    },
+    {
+      "front": "what is an examople",
+      "back": "whatever",
+      "deckId": 2,
+      "id": 7
+    },
+    {
+      "front": "what",
+      "back": "what",
+      "deckId": 2,
+      "id": 8
     }
   ]
 }

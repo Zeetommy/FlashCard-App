@@ -36,7 +36,9 @@ function Form() {
       [target.name]: target.value,
     });
   }
-
+  async function handleCancel() {
+  history.push(`/decks/${deckId}`);
+}
   async function handleSubmit(event) {
     event.preventDefault();
     const abortController = new AbortController();
@@ -121,7 +123,7 @@ function Form() {
             />
             <button
               className="btn btn-secondary mx-1"
-              onClick={() => handleDone()}
+              onClick={() => handleCancel()}
             >
               Cancel
             </button>
